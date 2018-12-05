@@ -22,3 +22,8 @@ Route::get('/categories/{category}', 'CategoryController@show');
 /* Product */
 Route::get('/products', 'ProductController@index')->name('products');
 Route::get('/products/{product}', 'ProductController@show');
+
+/*Cart*/
+Route::get('/cart','CartController@index');
+Route::get('/cart/{product}', 'CartController@store');
+

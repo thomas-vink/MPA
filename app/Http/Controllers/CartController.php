@@ -15,7 +15,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        return view('cart.index', ['cart' => session('cart'), 'product' => product::all()]);
+
     }
 
     /**
@@ -26,7 +27,7 @@ class CartController extends Controller
      */
     public function store(Product $product)
     {
-        //
+        return Cart::addProductToSession($product);
     }
 
     /**
