@@ -8,6 +8,7 @@ use App\Product;
 class Cart
 {
 
+
     public static function addProductToSession($product)
     {
         $currentCart = session('cart');
@@ -15,11 +16,9 @@ class Cart
 
         if (isset($currentCart)) {
             if (array_key_exists($product->id, $currentCart)) {
-                if ($currentCart[$product->id] >= 1){
-                    $newAmount = $currentCart[$product->id]+ 1;
-                    $currentCart[$product->id] = $newAmount;
-                    session(['cart' => $currentCart]);
-                }
+                $newAmount = $currentCart[$product->id]+ 1;
+                $currentCart[$product->id] = $newAmount;
+                session(['cart' => $currentCart]);
             } else {
                 $Cart = $currentCart + array ($product->id =>1);
                 session(['cart' => $Cart]);
@@ -31,8 +30,12 @@ class Cart
         }
         return redirect('/');
     }
-    public static function getFromSession($product)
+
+
+    public static function changeAmountSession($product)
     {
+        $currentCart = session('cart');
+
 
     }
 

@@ -33,9 +33,26 @@
     table#cart tfoot td .btn{display:block;}
 
 }
-
+/*          Home-Page         */
 .card_content{
     width: 85%;
     margin-left: auto;
     margin-right: auto;
 }
+
+body {
+    padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+
+}
+.currentCat{
+    background-color: #3d4852;
+}
+/*          Details-Page         */
+
+

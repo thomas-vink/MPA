@@ -15,7 +15,7 @@
                         </ul>
                     </div>
                 </div>
-                {{ $categories->links() }}
+
             </div>
         </div>
     </div>

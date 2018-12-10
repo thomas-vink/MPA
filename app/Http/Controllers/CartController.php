@@ -38,7 +38,7 @@ class CartController extends Controller
      */
     public function update(Product $product)
     {
-        //
+       return Cart::changeAmountSession($product);
     }
 
     /**

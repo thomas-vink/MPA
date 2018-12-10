@@ -19,11 +19,14 @@ Route::get('/', 'ProductController@index')->name('home');
 Route::get('/categories', 'CategoryController@index')->name('categories');
 Route::get('/categories/{category}', 'CategoryController@show');
 
+//Route::resource('categories', 'CategoriesController');
+
 /* Product */
 Route::get('/products', 'ProductController@index')->name('products');
 Route::get('/products/{product}', 'ProductController@show');
 
 /*Cart*/
-Route::get('/cart','CartController@index');
+Route::get('/cart','CartController@index')->name('cart');
 Route::get('/cart/{product}', 'CartController@store');
 
+Route::post('/cart/{product}', 'CartController@update')->name('cart.update');
