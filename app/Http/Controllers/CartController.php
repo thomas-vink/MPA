@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Classes\Cart;
+use function Couchbase\defaultDecoder;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -15,6 +16,7 @@ class CartController extends Controller
      */
     public function index()
     {
+
         return view('cart.index', ['cart' => session('cart'), 'product' => product::all()]);
 
     }
@@ -27,6 +29,7 @@ class CartController extends Controller
      */
     public function store(Product $product)
     {
+        dd($product);
         return Cart::addProductToSession($product);
     }
 
@@ -36,9 +39,10 @@ class CartController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Product $product)
+    public function update(Request $request, Product $product)
     {
-       return Cart::changeAmountSession($product);
+        $amount = $request->input('quantity');
+        return Cart::changeAmountSession($product,$amount);
     }
 
     /**
@@ -49,6 +53,6 @@ class CartController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+       return Cart::deleteFromSession($product);
     }
 }

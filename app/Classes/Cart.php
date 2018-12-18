@@ -2,6 +2,7 @@
 
 namespace App\Classes;
 
+use function Couchbase\defaultDecoder;
 use Illuminate\Support\Facades\Session;
 use App\Product;
 
@@ -32,11 +33,26 @@ class Cart
     }
 
 
-    public static function changeAmountSession($product)
+    public static function changeAmountSession($product, $amount)
     {
-        $currentCart = session('cart');
+        $currentSession = session('cart');
+        if ($amount >= 1){
+            $currentSession[$product->id] = $amount;
+            session(['cart' => $currentSession]);
+        }
+        else{
+            unset($currentSession[$product->id]);
+            session(['cart' => $currentSession]);
+        }
+        return Redirect('/cart');
+    }
 
-
+    public static function deleteFromSession($product)
+    {
+        $currentSession = session('cart');
+        unset($currentSession[$product->id]);
+        session(['cart' => $currentSession]);
+        return Redirect('/cart');
     }
 
 }

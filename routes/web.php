@@ -17,16 +17,18 @@ Route::get('/', 'ProductController@index')->name('home');
 
 /* Categories */
 Route::get('/categories', 'CategoryController@index')->name('categories');
-Route::get('/categories/{category}', 'CategoryController@show');
+Route::get('/categories/{category}', 'CategoryController@show')->name('categories.show');
 
-//Route::resource('categories', 'CategoriesController');
 
 /* Product */
 Route::get('/products', 'ProductController@index')->name('products');
-Route::get('/products/{product}', 'ProductController@show');
+Route::get('/products/{product}', 'ProductController@show')->name('products.show');
 
 /*Cart*/
 Route::get('/cart','CartController@index')->name('cart');
-Route::get('/cart/{product}', 'CartController@store');
-
 Route::post('/cart/{product}', 'CartController@update')->name('cart.update');
+Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
+Route::get('/cart/{product}', 'CartController@store')->name('cart.store');
+
+/*Orders*/
+Route::get('/order','OrderController@index')->name('order');

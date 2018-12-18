@@ -60,7 +60,7 @@
                                 <p class="card-text">{{$product->description}}</p>
                             </div>
                             <div class="card-footer">
-                                <a href="{{action('CartController@store', ['id' => $product->id])}}"><button type="button" class="btn btn-primary">add to cart</button></a>
+                                <a href="{{route('cart.store', ['id' => $product->id])}}"><button type="button" class="btn btn-primary">add to cart</button></a>
                             </div>
                         </div>
                     </div>
